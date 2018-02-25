@@ -1,11 +1,20 @@
 package pl.kamilsalega.eventmanagmentapi.entities;
 
+import org.hibernate.annotations.CreationTimestamp;
+
+import javax.persistence.*;
 import java.time.Instant;
 
+@MappedSuperclass
 public class AbstractEntity {
 
-
+    @Id
+    @Column(nullable = false, updatable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     protected Long id;
+
+    @CreationTimestamp
+    @Column(updatable = false)
     protected Instant created;
 
     public Long getId() {

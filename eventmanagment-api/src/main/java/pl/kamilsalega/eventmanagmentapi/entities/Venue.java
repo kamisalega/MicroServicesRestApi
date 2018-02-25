@@ -1,5 +1,9 @@
 package pl.kamilsalega.eventmanagmentapi.entities;
 
+import javax.persistence.Entity;
+import java.util.Objects;
+
+@Entity
 public class Venue extends AbstractEntity {
 
     private String name;
@@ -64,5 +68,17 @@ public class Venue extends AbstractEntity {
 
     public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
+    }
+
+    public boolean equals(Object obj) {
+
+        return Objects.equals(id, ((Venue) obj).id);
+
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(id);
     }
 }
